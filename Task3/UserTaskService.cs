@@ -13,7 +13,7 @@ namespace Task3
             _userDao = userDao;
         }
 
-        public int AddTaskForUser(int userId, UserTask task)
+        public void AddTaskForUser(int userId, UserTask task)
         {
             if (userId < 0)
                 throw new InvalidUserException("Invalid userId");
@@ -30,8 +30,6 @@ namespace Task3
             }
 
             tasks.Add(task);
-
-            return 0;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Task3
             try
             {
                 var task = new UserTask(description);
-                int result = _taskService.AddTaskForUser(userId, task);
+                _taskService.AddTaskForUser(userId, task);
 
                 return null;
             }
