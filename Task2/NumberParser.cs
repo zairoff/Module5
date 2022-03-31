@@ -25,7 +25,7 @@ namespace Task2
 
                 set.Add(input[i]);
 
-                if (CheckCharacter(input[i]))
+                if (IsSpecialCharacter(input[i]))
                     continue;
 
                 number += Math.Pow(10, len - i - 1) * (int)char.GetNumericValue(input[i]);
@@ -41,12 +41,12 @@ namespace Task2
 
         private static bool IsNumber(HashSet<char> set, char ch, int index)
         {
-            return ((set.Contains(ch) && CheckCharacter(ch))
+            return ((set.Contains(ch) && IsSpecialCharacter(ch))
                     || (!char.IsDigit(ch) && index != 0)
-                    || (!char.IsDigit(ch) && !CheckCharacter(ch)));
+                    || (!char.IsDigit(ch) && !IsSpecialCharacter(ch)));
         }
 
-        private static bool CheckCharacter(char ch)
+        private static bool IsSpecialCharacter(char ch)
         {
             return ch == '+' || ch == '-';
         }
