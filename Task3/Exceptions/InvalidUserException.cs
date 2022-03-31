@@ -2,7 +2,6 @@
 
 namespace Task3.Exceptions
 {
-    [Serializable]
     public class InvalidUserException : Exception
     {
         public InvalidUserException()

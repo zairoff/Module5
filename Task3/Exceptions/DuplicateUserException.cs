@@ -2,7 +2,6 @@
 
 namespace Task3.Exceptions
 {
-    [Serializable]
     public class DuplicateUserException : Exception
     {
         public DuplicateUserException()
