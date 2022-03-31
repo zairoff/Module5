@@ -26,7 +26,7 @@ namespace Task3
             foreach (var t in tasks)
             {
                 if (string.Equals(task.Description, t.Description, StringComparison.OrdinalIgnoreCase))
-                    throw new DuplicateUserException("The task already exists");
+                    throw new DuplicateTaskFoundException("The task already exists");
             }
 
             tasks.Add(task);
