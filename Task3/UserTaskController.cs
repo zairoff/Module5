@@ -1,5 +1,5 @@
-﻿using Task3.DoNotChange;
-using Task3.Exceptions;
+﻿using System;
+using Task3.DoNotChange;
 
 namespace Task3
 {
@@ -14,37 +14,18 @@ namespace Task3
 
         public bool AddTaskForUser(int userId, string description, IResponseModel model)
         {
-            string message = GetMessageForModel(userId, description);
-            if (message != null)
-            {
-                model.AddAttribute("action_result", message);
-                return false;
-            }
-
-            return true;
-        }
-
-        private string GetMessageForModel(int userId, string description)
-        {
             try
             {
                 var task = new UserTask(description);
                 _taskService.AddTaskForUser(userId, task);
 
-                return null;
+                return true;
             }
-            catch (InvalidUserException ex)
+            catch (Exception ex)
             {
-                return ex.Message;
-            }
-            catch (UserNotFoundException ex)
-            {
-                return ex.Message;
-            }
-            catch (DuplicateUserException ex)
-            {
-                return ex.Message;
-            }
-        }
+                model.AddAttribute("action_result", ex.Message);
+                return false;
+            }           
+        }        
     }
 }
