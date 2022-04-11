@@ -1,5 +1,6 @@
 ﻿using System;
 using Task3.DoNotChange;
+using Task3.Exceptions;
 
 namespace Task3
 {
@@ -21,11 +22,20 @@ namespace Task3
 
                 return true;
             }
-            catch (Exception ex)
+            catch (InvalidUserException ex)
             {
                 model.AddAttribute("action_result", ex.Message);
-                return false;
-            }           
-        }        
+            }
+            catch (UserNotFoundException ex)
+            {
+                model.AddAttribute("action_result", ex.Message);
+            } 
+            catch (DuplicateTaskFoundException ex)
+            {
+                model.AddAttribute("action_result", ex.Message);
+            } 
+            
+            return false;
+        }
     }
 }
