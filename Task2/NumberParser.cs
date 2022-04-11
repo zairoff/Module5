@@ -20,7 +20,7 @@ namespace Task2
 
             for (int i = 0; i < len; i++)
             {
-                if (!IsNumber(set, input[i], i))
+                if (IsCharacter(set, input[i], i))
                     throw new FormatException();
 
                 set.Add(input[i]);
@@ -39,7 +39,7 @@ namespace Task2
             return (int)number;
         }
 
-        private static bool IsNumber(HashSet<char> set, char ch, int index)
+        private static bool IsCharacter(HashSet<char> set, char ch, int index)
         {
             return ((set.Contains(ch) && IsSpecialCharacter(ch))
                     || (!char.IsDigit(ch) && index != 0)
